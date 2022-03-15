@@ -9,3 +9,6 @@ class Team(models.Model):
     pilot = models.OneToOneField(Pilot, on_delete=models.PROTECT, unique=True)
     car = models.OneToOneField(Car, on_delete=models.PROTECT, unique=True)
     points = models.CharField(choices=DEFAULT_POINTS, max_length=3, blank=True)
+
+    def __str__(self) -> str:
+        return self.name

@@ -6,13 +6,15 @@ from rest_framework.response import Response
 from django.forms.models import model_to_dict
 
 
-class PilotViewsets(viewsets.ModelViewSet):
+class PilotViewsets(viewsets.ViewSet):
     permission = []
     serializer_class = PilotSerializer
-    # queryset = Pilot.objects.all()
 
-    def get_queryset(self):
-        return Pilot.objects.all()
+    def list(self, request):
+        queryset = Pilot.objects.all()
+        serializer = PilotSerializer(queryset, many=True)
+        return Response(serializer.data)
+
 
     def create_pilot(self, request):
         serializer = PilotSerializer(data=request.data)

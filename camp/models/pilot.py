@@ -7,3 +7,6 @@ class Pilot(models.Model):
     id_psn = models.CharField(max_length=30)
     number = models.IntegerField()
     points = models.CharField(choices=DEFAULT_POINTS, max_length=3, blank=True)
+
+    def __str__(self) -> str:
+        return self.name

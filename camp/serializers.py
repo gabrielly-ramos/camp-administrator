@@ -27,4 +27,4 @@ class TeamSerializer(serializers.ModelSerializer):
 class CarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car
-        fields = '__all__'
+        fields = ("manufacturer", "car_model", "power", "weight", "pilot")

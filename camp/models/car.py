@@ -8,3 +8,6 @@ class Car(models.Model):
     power = models.CharField(max_length=10,)
     weight = models.CharField(max_length=10,)
     pilot = models.OneToOneField(Pilot, on_delete=models.PROTECT, unique=True)
+
+    def __str__(self) -> str:
+        return self.manufacturer

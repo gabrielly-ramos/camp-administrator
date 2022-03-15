@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from django.forms.models import model_to_dict
 
     
-class TeamViewsets(viewsets.ModelViewSet):
+class TeamViewsets(viewsets.ViewSet):
     permission = []
     serializer_class = TeamSerializer
     queryset = Team.objects.all()

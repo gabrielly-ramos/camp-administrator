@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from django.forms.models import model_to_dict
 
 
-class GridViewsets(viewsets.ModelViewSet):
+class GridViewsets(viewsets.ViewSet):
     permission = []
     serializer_class = GridSerializer
     queryset = Grid.objects.all()
