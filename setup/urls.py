@@ -14,26 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-admin.autodiscover()
+from django.urls import path
 from camp.views import (
-    UserDetails, 
-    GroupList, 
-    UserList, 
     PilotViewsets,
     CarViewsets,
     TeamViewsets,
     GridViewsets
     )
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
-    path('users/', UserList.as_view()),
-    path('users/<pk>/', UserDetails.as_view()),
-    path('groups/', GroupList.as_view()),
     path('pilot/', PilotViewsets.as_view({'get': "list", "post": "create_pilot"})), 
+    path('pilot/<int:pk>/', PilotViewsets.as_view({'get': "list", 'put' : 'update_pilot'})), 
     path('car/', CarViewsets.as_view({'get': "list", "post": "create_car"})), 
     path('grid/', GridViewsets.as_view({'get': "list"})), 
-    path('team/', TeamViewsets.as_view({'get': "list"})), 
+    path('team/', TeamViewsets.as_view({'get': "list", "post": "create_team"})),
 ]

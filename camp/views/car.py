@@ -1,12 +1,11 @@
-from rest_framework import permissions, viewsets, status
-from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope
-from camp.serializers import CarSerializer, CreateCarSerializer
+from rest_framework import viewsets, status
+from camp.serializers import CarSerializer
 from camp.models import Car
 from django.forms.models import model_to_dict
 from rest_framework.response import Response
 
 class CarViewsets(viewsets.ModelViewSet):
-    permission = [permissions.IsAuthenticated, TokenHasReadWriteScope]
+    permission = []
     serializer_class = CarSerializer
     
     def get_queryset(self):
@@ -14,7 +13,7 @@ class CarViewsets(viewsets.ModelViewSet):
 
     
     def create_car(self, request):
-        serializer = CreateCarSerializer(data=request.data)
+        serializer = CarSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         car = serializer.create(request.data)
 
