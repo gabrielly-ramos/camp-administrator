@@ -1,15 +1,21 @@
 from rest_framework import serializers
 from camp.models import Pilot, Car, Grid, Team
 from rest_framework import serializers
-from django.contrib.auth.models import User, Group
-from camp.choices_points import DEFAULT_POINTS
-from django.shortcuts import get_object_or_404
 
 
-class  PilotSerializer(serializers.ModelSerializer):
+class PilotSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pilot
         fields = '__all__'
+
+    
+    def update(self, instance, validated_data):
+        points = int(instance.points)
+        if validated_data.get("points"):
+            instance.points = points + validated_data.get("points")
+        instance.save()
+
+        return instance
 
 
 class GridSerializer(serializers.ModelSerializer):
@@ -28,6 +34,14 @@ class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
         fields = '__all__'
+
+    
+    def update(self, instance, validated_data):
+        if validated_data.get("points"):
+            instance.points = int(instance.points) + validated_data.get("points")
+        instance.save()
+
+        return instance
 
 
 class CarSerializer(serializers.ModelSerializer):
