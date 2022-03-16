@@ -7,7 +7,7 @@ class Car(models.Model):
     car_model = models.CharField(max_length=150)
     power = models.CharField(max_length=10)
     weight = models.CharField(max_length=10)
-    # pilots = models.ManyToManyField(Pilot)
+    pilots = models.ManyToManyField(Pilot, related_name="pilot")
 
     def __str__(self) -> str:
         return self.manufacturer
