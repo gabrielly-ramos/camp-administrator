@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from camp.models import Pilot, Car, Grid, Team, pilot
+from camp.models import Pilot, Car, Grid, Team
 from rest_framework import serializers
 from django.contrib.auth.models import User, Group
 from camp.choices_points import DEFAULT_POINTS
@@ -16,6 +16,7 @@ class GridSerializer(serializers.ModelSerializer):
     class Meta:
         model = Grid
         fields = '__all__'
+        depth = 1
 
 
 class TeamSerializer(serializers.ModelSerializer):
@@ -27,4 +28,5 @@ class TeamSerializer(serializers.ModelSerializer):
 class CarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car
-        fields = ("manufacturer", "car_model", "power", "weight", "pilot")
+        fields = '__all__'
+        depth = 1

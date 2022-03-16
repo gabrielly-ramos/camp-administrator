@@ -1,13 +1,13 @@
 from django.db import models
-from camp.models.pilot import Pilot
+from camp.models import Pilot
 
 
 class Car(models.Model):
-    manufacturer = models.CharField(max_length=150)
+    manufacturer = models.CharField(max_length=150)    
     car_model = models.CharField(max_length=150)
-    power = models.CharField(max_length=10,)
-    weight = models.CharField(max_length=10,)
-    pilot = models.OneToOneField(Pilot, on_delete=models.PROTECT, unique=True)
+    power = models.CharField(max_length=10)
+    weight = models.CharField(max_length=10)
+    # pilots = models.ManyToManyField(Pilot)
 
     def __str__(self) -> str:
         return self.manufacturer
