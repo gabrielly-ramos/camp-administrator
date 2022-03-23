@@ -33,8 +33,4 @@ router.register(r'pilot', views.PilotViewset)
 router.register(r'car', views.CarViewset)
 router.register(r'team', views.TeamViewset)
 router.register(r'grid', views.GridViewset)
-urlpatterns = router.urls
-
-urlpatterns = [
-    path('admin/', admin.site.urls), 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns = router.urls + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
