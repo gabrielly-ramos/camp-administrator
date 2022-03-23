@@ -25,6 +25,9 @@ from camp.views import (
     )
 from rest_framework import routers
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 router = routers.DefaultRouter()
 router.register(r'pilot', views.PilotViewset)
 router.register(r'car', views.CarViewset)
@@ -32,12 +35,6 @@ router.register(r'team', views.TeamViewset)
 router.register(r'grid', views.GridViewset)
 urlpatterns = router.urls
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),    
-#     path('pilot/', PilotViewsets.as_view({'get': "list", "post": "create_pilot"})), 
-#     path('pilot/<int:pk>/', PilotViewsets.as_view({'get': "list", 'put' : 'update_pilot'})), 
-#     path('car/', CarViewset.as_view({'get': "list", "post": "create_car"})), 
-#     path('grid/', GridViewsets.as_view({'get': "list"})), 
-#     path('team/', TeamViewsets.as_view({'get': "list", "post": "create_team"})),
-#     path('', include(router.urls)),
-# ]
+urlpatterns = [
+    path('admin/', admin.site.urls), 
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
