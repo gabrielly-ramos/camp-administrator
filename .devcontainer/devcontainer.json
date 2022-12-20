@@ -1,0 +1,12 @@
+{
+    "name": "Existing Docker Compose (Extend)",
+
+    "dockerComposeFile": [
+		"../docker-compose.yml"
+	],
+    
+
+    "settings": {
+		"terminal.integrated.shell.linux": null
+	}    
+}
