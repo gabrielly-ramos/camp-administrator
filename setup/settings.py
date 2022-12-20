@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-+_e(*3s304*1zpawgralhpuki8g71l8=hpnp%5*u%51!#su67g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', "camp-administrator.herokuapp.com"]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', "0.0.0.0", "camp-administrator.herokuapp.com"]
 
 
 # Application definition
@@ -138,4 +138,3 @@ MIDDLEWARE_CLASSES = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-django_heroku.settings(locals())
